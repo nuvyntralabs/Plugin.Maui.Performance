@@ -200,7 +200,7 @@ dotnet build samples/Plugin.Maui.Performance.Sample/Plugin.Maui.Performance.Samp
 dotnet pack src/Plugin.Maui.Performance/Plugin.Maui.Performance.csproj -c Release -o artifacts
 ```
 
-The `.nupkg` is written to `artifacts/Plugin.Maui.Performance.1.0.0.nupkg`.
+The `.nupkg` is written to `artifacts/Plugin.Maui.Performance.1.0.6.nupkg`.
 
 ## License
 
