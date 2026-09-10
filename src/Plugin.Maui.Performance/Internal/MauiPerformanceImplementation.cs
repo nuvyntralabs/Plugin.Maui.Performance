@@ -12,7 +12,8 @@ sealed class MauiPerformanceImplementation : IMauiPerformance, IMauiPerformanceL
         PerformanceCategory.Image,
         PerformanceCategory.Render,
         PerformanceCategory.Memory,
-        PerformanceCategory.Custom
+        PerformanceCategory.Custom,
+        PerformanceCategory.Profile
     ];
 
     readonly MauiPerformanceOptions _options;
@@ -46,6 +47,7 @@ sealed class MauiPerformanceImplementation : IMauiPerformance, IMauiPerformanceL
         _store = new MetricStore(options.MaxMetrics);
         _navigation = new NavigationWatcher(this);
         _images = new ImageWatcher(this, options.ImageLoadTimeout);
+        MauiProfile.Bind(options.CliProfile);
     }
 
     public bool IsSupported => true;
@@ -211,6 +213,7 @@ sealed class MauiPerformanceImplementation : IMauiPerformance, IMauiPerformanceL
         }
 
         CompleteStartup();
+        MauiProfile.NotifyFirstPage();
         CompleteNavigation(pageName);
 
         if (_options.AutoMeasurePages)
@@ -262,7 +265,12 @@ sealed class MauiPerformanceImplementation : IMauiPerformance, IMauiPerformanceL
             {
                 Complete("UI Render", PerformanceCategory.Render, renderStart, renderStartedAt, memory,
                     new Dictionary<string, string>(StringComparer.Ordinal) { ["page"] = pageName });
+                MauiProfile.NotifyFirstFrame();
             });
+        }
+        else
+        {
+            _platform.ObserveNextFrame(_ => MauiProfile.NotifyFirstFrame());
         }
     }
 

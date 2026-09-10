@@ -30,5 +30,8 @@ public enum PerformanceCategory
     Render,
 
     /// <summary>Local database work (for example SQLite).</summary>
-    Database
+    Database,
+
+    /// <summary>A <see cref="MauiProfile.Scenario"/> captured for <c>maui profile</c>.</summary>
+    Profile
 }

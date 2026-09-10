@@ -5,7 +5,7 @@ nuget.org receives the nupkg and matching snupkg (when one exists).
 GitHub Packages receives the nupkg only — that registry does not host
 symbol packages. Both pushes use --skip-duplicate.
 
-Template and source-generator packages may omit snupkg.
+Template, source-generator, and PackAsTool (.Cli) packages may omit snupkg.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ def fail(message: str) -> None:
 
 def skip_symbols(nupkg_stem: str) -> bool:
     name = nupkg_stem.lower()
-    return ".templates." in name or ".sourcegenerators." in name
+    return ".templates." in name or ".sourcegenerators." in name or ".cli." in name
 
 
 def github_packages_source(owner: str) -> str:
@@ -67,7 +67,9 @@ def run_push(path: Path, api_key: str, source: str) -> None:
 def self_test() -> None:
     assert skip_symbols("Plugin.Maui.MVVMExpress.Templates.1.3.0")
     assert skip_symbols("Plugin.Maui.HttpForge.SourceGenerators.1.0.0")
+    assert skip_symbols("Plugin.Maui.Performance.Cli.1.0.7")
     assert not skip_symbols("Plugin.Maui.GeoLocator.1.0.8")
+    assert not skip_symbols("Plugin.Maui.Performance.1.0.7")
     assert github_packages_source("nuvyntralabs") == (
         "https://nuget.pkg.github.com/nuvyntralabs/index.json"
     )

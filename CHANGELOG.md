@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.7
+
+- Add `MauiProfile` as an intuitive wrapper for `maui profile` / `Microsoft.Maui.ProfilingHelper`: session detection, first-page / first-frame / named-scenario stop, marks, and command helpers.
+- Add the `maui-perf` dotnet tool (`Plugin.Maui.Performance.Cli`) with `android`/`ios` aliases, `30s` durations, and official `StartupComplete` stopping events.
+- Publish `Plugin.Maui.Performance.Cli` from the same CI as the library (PackAsTool, no snupkg).
+
 ## 1.0.6
 
 - Align the README pack path with the shipped package version.

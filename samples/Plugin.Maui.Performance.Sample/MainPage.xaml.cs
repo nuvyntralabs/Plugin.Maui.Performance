@@ -26,6 +26,7 @@ public partial class MainPage : ContentPage
 
     async void OnLoadCustomerClicked(object? sender, EventArgs e)
     {
+        using var scenario = MauiProfile.Scenario("LoadCustomer");
         using var trace = MauiPerformance.Trace("LoadCustomer");
 
         try
@@ -44,6 +45,7 @@ public partial class MainPage : ContentPage
 
         MauiPerformance.Measure("SQLite Query", () => Thread.Sleep(18), PerformanceCategory.Database);
         await MauiPerformance.MeasureAsync("Image Loading", () => Task.Delay(210), PerformanceCategory.Image);
+        MauiProfile.Mark("CustomerReady");
         RefreshReport();
     }
 

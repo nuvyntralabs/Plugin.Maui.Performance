@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>maui-perf</ToolCommandName>
+    <IsPackable>true</IsPackable>
+    <IncludeSymbols>false</IncludeSymbols>
+    <IsAotCompatible>true</IsAotCompatible>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <PackageId>Plugin.Maui.Performance.Cli</PackageId>
+    <Title>maui-perf — intuitive maui profile wrapper</Title>
+    <Description>dotnet tool that wraps maui profile startup/manual with framework aliases, 30s durations, and the official StartupComplete stopping events.</Description>
+    <PackageTags>dotnet-maui;maui;maui-profile;dotnet-trace;speedscope;profiler;dotnet-tool</PackageTags>
+    <Authors>Niladri</Authors>
+    <Company>MauiEssentials</Company>
+    <Copyright>Copyright © 2026 Niladri</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://nuvyntralabs.github.io/packages/plugin-maui-performance/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nuvyntralabs/Plugin.Maui.Performance</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.7</Version>
+    <PackageReleaseNotes>Add maui-perf: wrap maui profile startup/manual with android/ios aliases, 30s durations, and StartupComplete stopping events.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\..\nuget.png" Pack="true" PackagePath="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Plugin.Maui.Performance\MauiProfileCommand.cs" Link="Shared\MauiProfileCommand.cs" />
+    <Compile Include="..\Plugin.Maui.Performance\MauiProfileSessionRequest.cs" Link="Shared\MauiProfileSessionRequest.cs" />
+    <Compile Include="..\Plugin.Maui.Performance\MauiProfileMode.cs" Link="Shared\MauiProfileMode.cs" />
+    <Compile Include="..\Plugin.Maui.Performance\MauiProfileFormat.cs" Link="Shared\MauiProfileFormat.cs" />
+  </ItemGroup>
+
+</Project>

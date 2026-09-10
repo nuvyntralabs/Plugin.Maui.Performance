@@ -1,6 +1,6 @@
 # Plugin.Maui.Performance
 
-Lightweight mobile performance profiler for .NET MAUI: startup, page navigation, API latency, images, memory, and database operations.
+Lightweight mobile performance profiler for .NET MAUI: startup, page navigation, API latency, images, memory, database operations, and a maui profile / MauiProfilingHelper wrapper (`MauiProfile`, `maui-perf`).
 
 Repository: https://github.com/nuvyntralabs/Plugin.Maui.Performance
 NuGet: https://www.nuget.org/packages/Plugin.Maui.Performance
@@ -25,6 +25,7 @@ Registration: `UseMauiPerformance` — see README.md.
 - How do I measure MAUI startup and page load time?
 - Lightweight mobile profiler without Application Insights
 - Trace API vs SQLite vs image load
+- How do I wrap maui profile / capture a startup .nettrace?
 
 ## Do not use when
 

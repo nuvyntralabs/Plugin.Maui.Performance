@@ -49,4 +49,10 @@ public sealed class MauiPerformanceOptions
     /// Give up waiting for page images after this duration.
     /// </summary>
     public TimeSpan ImageLoadTimeout { get; set; } = MauiPerformanceDefaults.ImageLoadTimeout;
+
+    /// <summary>
+    /// How <see cref="MauiProfile"/> stops a <c>maui profile startup</c> session
+    /// (first frame by default, or a named scenario).
+    /// </summary>
+    public CliProfileOptions CliProfile { get; } = new();
 }

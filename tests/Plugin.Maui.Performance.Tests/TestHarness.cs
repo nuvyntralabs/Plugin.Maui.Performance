@@ -54,6 +54,7 @@ static class Harness
         Action<MauiPerformanceOptions>? configure = null,
         DateTimeOffset? processStartedAt = null)
     {
+        MauiProfile.ResetForTests();
         var clock = new FakeClock();
         var platform = new FakePlatform();
         var options = new MauiPerformanceOptions

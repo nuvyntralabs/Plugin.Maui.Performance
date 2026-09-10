@@ -2,7 +2,7 @@
 
 ## Project
 
-Lightweight mobile performance profiler for .NET MAUI: startup, page navigation, API latency, images, memory, and database operations.
+Lightweight mobile performance profiler for .NET MAUI: startup, page navigation, API latency, images, memory, database operations, and a wrapper for `maui profile` (`MauiProfile`, `maui-perf`).
 
 - Package: `Plugin.Maui.Performance`
 - NuGet: https://www.nuget.org/packages/Plugin.Maui.Performance

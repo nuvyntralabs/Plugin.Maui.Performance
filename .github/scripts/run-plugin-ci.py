@@ -50,6 +50,37 @@ def is_packable(csproj: Path) -> bool:
     return True
 
 
+def is_dotnet_tool(csproj: Path) -> bool:
+    raw = parse_csproj_values(csproj, {"PackAsTool"})
+    return any(value.lower() == "true" for value in raw["PackAsTool"])
+
+
+def package_id(csproj: Path) -> str:
+    raw = parse_csproj_values(csproj, {"PackageId", "AssemblyName"})
+    if raw["PackageId"]:
+        return raw["PackageId"][0]
+    if raw["AssemblyName"]:
+        return raw["AssemblyName"][0]
+    return csproj.stem
+
+
+def package_version(csproj: Path) -> str:
+    raw = parse_csproj_values(csproj, {"PackageVersion", "Version"})
+    if raw["PackageVersion"]:
+        return raw["PackageVersion"][0]
+    if raw["Version"]:
+        return raw["Version"][0]
+    return ""
+
+
+def nupkg_for(package: str, version: str, outputs: list[Path]) -> Path | None:
+    expected = f"{package}.{version}.nupkg".lower()
+    for path in outputs:
+        if path.name.lower() == expected:
+            return path
+    return None
+
+
 def tfm_matches(requested: str, actual: str) -> bool:
     if actual == requested:
         return True
@@ -188,23 +219,28 @@ def test_project(csproj: Path, tfm: str | None, configuration: str) -> None:
     run(command, csproj.parent)
 
 
-def pack_project(csproj: Path, configuration: str) -> None:
-    run(
-        [
-            "dotnet",
-            "pack",
-            str(csproj),
-            "-c",
-            configuration,
-            "--nologo",
-            "--verbosity",
-            "minimal",
-            "--no-build",
-            "-p:IncludeSymbols=true",
-            "-p:SymbolPackageFormat=snupkg",
-        ],
-        csproj.parent,
-    )
+def pack_project(csproj: Path, configuration: str, *, include_symbols: bool = True) -> None:
+    command = [
+        "dotnet",
+        "pack",
+        str(csproj),
+        "-c",
+        configuration,
+        "--nologo",
+        "--verbosity",
+        "minimal",
+        "--no-build",
+    ]
+    if include_symbols:
+        command.extend(
+            [
+                "-p:IncludeSymbols=true",
+                "-p:SymbolPackageFormat=snupkg",
+            ]
+        )
+    else:
+        command.append("-p:IncludeSymbols=false")
+    run(command, csproj.parent)
 
 
 def packaged_outputs(plugin_root: Path, pattern: str) -> list[Path]:
@@ -289,18 +325,21 @@ def main() -> int:
             return 1
 
     packed_any = False
+    packed_library = False
     if args.pack:
         for csproj in src_projects:
             if not is_packable(csproj):
                 continue
             actual = declared_tfms(csproj)
             matches = matching_tfms(requested, actual)
-            if matches:
-                pack_project(csproj, args.configuration)
-                packed_any = True
-            elif any(item == "net10.0" for item in requested):
-                pack_project(csproj, args.configuration)
-                packed_any = True
+            should_pack = bool(matches) or any(item == "net10.0" for item in requested)
+            if not should_pack:
+                continue
+            tool = is_dotnet_tool(csproj)
+            pack_project(csproj, args.configuration, include_symbols=not tool)
+            packed_any = True
+            if not tool:
+                packed_library = True
         if not packed_any:
             print(f"::error::No packages generated for {plugin_root.name}")
             return 1
@@ -312,9 +351,19 @@ def main() -> int:
         print("Generated symbol packages:", flush=True)
         for path in symbols:
             print(f"  {path}", flush=True)
-        if not symbols:
+        if packed_library and not symbols:
             print(f"::error::No symbol packages (.snupkg) generated for {plugin_root.name}")
             return 1
+        for csproj in src_projects:
+            if not is_packable(csproj):
+                continue
+            identity = package_id(csproj)
+            version = package_version(csproj)
+            found = nupkg_for(identity, version, packages)
+            if found is None:
+                print(f"::error::Missing nupkg for {identity} {version} ({csproj.name})")
+                return 1
+            print(f"Packed {identity} {version} -> {found.name}", flush=True)
         stage_dir = args.stage_dir.strip()
         if stage_dir:
             stage = Path(stage_dir)

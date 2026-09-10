@@ -16,9 +16,9 @@
     <RootNamespace>Plugin.Maui.Performance</RootNamespace>
     <AssemblyName>Plugin.Maui.Performance</AssemblyName>
     <PackageId>Plugin.Maui.Performance</PackageId>
-    <Title>.NET MAUI Performance — startup, page, and API profiler</Title>
-    <Description>Lightweight mobile performance profiler for .NET MAUI on iOS and Android. Trace named operations, auto-measure startup, pages, navigation, API latency, images, memory, UI rendering, and database work, and print a compact timing report.</Description>
-    <PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;mauiessentials;performance;profiler;startup;latency;tracing;memory;diagnostics</PackageTags>
+    <Title>.NET MAUI Performance — startup, page, API, and maui profile helper</Title>
+    <Description>Lightweight mobile performance profiler for .NET MAUI on iOS and Android. Trace named operations, auto-measure startup, pages, navigation, API latency, images, memory, UI rendering, and database work, and stop maui profile startup on first frame or a named scenario.</Description>
+    <PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;mauiessentials;performance;profiler;startup;latency;tracing;memory;diagnostics;maui-profile;dotnet-trace</PackageTags>
     <Authors>Niladri</Authors>
     <Company>MauiEssentials</Company>
     <Copyright>Copyright © 2026 Niladri</Copyright>
@@ -28,8 +28,8 @@
     <PackageProjectUrl>https://nuvyntralabs.github.io/packages/plugin-maui-performance/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nuvyntralabs/Plugin.Maui.Performance</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.6</Version>
-    <PackageReleaseNotes>Align the README pack path with the shipped package version.</PackageReleaseNotes>
+    <Version>1.0.7</Version>
+    <PackageReleaseNotes>Add MauiProfile: wrap maui profile / MauiProfilingHelper with first-frame stop, named scenarios, marks, and maui-perf command helpers.</PackageReleaseNotes>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>

@@ -25,6 +25,7 @@ public static class MauiProgram
                 options.AutoMeasureImages = true;
                 options.AutoMeasureRendering = true;
                 options.SampleMemory = true;
+                options.CliProfile.CompleteOn = CliProfileCompleteOn.FirstFrame;
             });
 
 #if DEBUG

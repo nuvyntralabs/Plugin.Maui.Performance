@@ -1,3 +1,8 @@
+# Plugin.Maui.Performance + Plugin.Maui.Performance.Cli (maui-perf).
+# Version alignment and NuGet release cover both packable src projects.
+# Tests run Plugin.Maui.Performance.Tests and Plugin.Maui.Performance.Cli.Tests.
+# Pack emits the library nupkg/snupkg and the PackAsTool CLI nupkg (no snupkg).
+# Publish pushes both to nuget.org and GitHub Packages.
 name: CI
 
 on:
