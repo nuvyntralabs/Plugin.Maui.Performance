@@ -4,7 +4,7 @@ Lightweight mobile performance profiler for .NET MAUI: startup, page navigation,
 
 Repository: https://github.com/nuvyntralabs/Plugin.Maui.Performance
 NuGet: https://www.nuget.org/packages/Plugin.Maui.Performance
-Paper: https://niladripadhy.vercel.app/opensource/plugin-maui-performance
+Paper: https://nuvyntralabs.github.io/packages/plugin-maui-performance/
 Catalog: https://github.com/nuvyntralabs/MauiEssentials
 License: MIT
 

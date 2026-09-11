@@ -7,7 +7,7 @@ Lightweight mobile performance profiler for .NET MAUI: startup, page navigation,
 - Package: `Plugin.Maui.Performance`
 - NuGet: https://www.nuget.org/packages/Plugin.Maui.Performance
 - GitHub: https://github.com/nuvyntralabs/Plugin.Maui.Performance
-- Paper: https://niladripadhy.vercel.app/opensource/plugin-maui-performance
+- Paper: https://nuvyntralabs.github.io/packages/plugin-maui-performance/
 - Catalog: https://github.com/nuvyntralabs/MauiEssentials
 - Versions: net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+)
 
