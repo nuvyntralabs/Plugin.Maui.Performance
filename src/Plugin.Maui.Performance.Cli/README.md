@@ -3,7 +3,7 @@
 A small [dotnet tool](https://learn.microsoft.com/dotnet/core/tools/global-tools) that wraps [`maui profile`](https://learn.microsoft.com/en-us/dotnet/maui/developer-tools/cli/profile?view=net-maui-10.0) with shorter commands.
 
 ```bash
-dotnet tool install -g Plugin.Maui.Performance.Cli
+dotnet tool install -g Plugin.Maui.Performance.Cli --source https://api.nuget.org/v3/index.json
 maui-perf startup -f android
 maui-perf screen -f ios --format speedscope --duration 30s
 ```

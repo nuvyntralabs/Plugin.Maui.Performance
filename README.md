@@ -108,7 +108,7 @@ MauiProfile.Mark("CartReady");
 Install the companion tool, then use short aliases instead of the long official flags:
 
 ```bash
-dotnet tool install -g Plugin.Maui.Performance.Cli
+dotnet tool install -g Plugin.Maui.Performance.Cli --source https://api.nuget.org/v3/index.json
 
 maui-perf startup -f android
 maui-perf screen -f ios --speedscope --duration 30s
