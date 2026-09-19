@@ -115,6 +115,8 @@ maui-perf screen -f ios --speedscope --duration 30s
 maui-perf command startup -f android
 ```
 
+On an interactive terminal `maui-perf` asks every 4 hours whether to update from nuget.org (`[y/N]`, default no). Skip with `--no-update-check` or `NUVYNTRA_NO_UPDATE_CHECK=1`. Cache: `~/.nuvyntra/cli-updates.json` (shared with `maui-dev` and `nuvyn`). The CLI does not phone home.
+
 `startup` always passes:
 
 ```
@@ -262,7 +264,7 @@ dotnet build samples/Plugin.Maui.Performance.Sample/Plugin.Maui.Performance.Samp
 dotnet pack src/Plugin.Maui.Performance/Plugin.Maui.Performance.csproj -c Release -o artifacts
 ```
 
-The library `.nupkg` is written to `artifacts/Plugin.Maui.Performance.1.0.7.nupkg`. The CLI tool packs as `Plugin.Maui.Performance.Cli.1.0.7.nupkg`. Both packages publish from this repo’s GitHub Actions CI on push to `main`: version alignment and the NuGet release check cover both PackageIds, tests run the library and `maui-perf` suites, pack requires both nupkgs (library + snupkg; CLI PackAsTool without snupkg), then nuget.org and GitHub Packages receive both.
+The library `.nupkg` is written to `artifacts/Plugin.Maui.Performance.1.0.8.nupkg`. The CLI tool packs as `Plugin.Maui.Performance.Cli.1.0.8.nupkg`. Both packages publish from this repo’s GitHub Actions CI on push to `main`: version alignment and the NuGet release check cover both PackageIds, tests run the library and `maui-perf` suites, pack requires both nupkgs (library + snupkg; CLI PackAsTool without snupkg), then nuget.org and GitHub Packages receive both.
 
 ## License
 

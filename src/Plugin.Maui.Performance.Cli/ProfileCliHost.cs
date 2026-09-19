@@ -14,7 +14,22 @@ public static class ProfileCliHost
         ArgumentNullException.ThrowIfNull(stdout);
         ArgumentNullException.ThrowIfNull(stderr);
 
-        var parsed = ProfileCliParser.Parse(args);
+        var remaining = ToolUpdateCheck.ConsumeNoUpdateCheckFlag(args, out var noUpdateCheck);
+        var update = ToolUpdateCheck.Run(new UpdateCheckOptions
+        {
+            ToolKey = "maui-perf",
+            PackageId = "Plugin.Maui.Performance.Cli",
+            CurrentVersion = ToolUpdateCheck.ReadAssemblyVersion(typeof(ProfileCliHost)),
+            Args = remaining,
+            Stdout = stdout,
+            Stderr = stderr,
+            Stdin = Console.In,
+            AllowPrompt = ToolUpdateCheck.IsInteractive(stdout) && !noUpdateCheck,
+        });
+        if (update == UpdateCheckOutcome.UpdatedExit)
+            return 0;
+
+        var parsed = ProfileCliParser.Parse(remaining);
         if (parsed.ShowHelp)
         {
             stdout.WriteLine(ProfileCliParser.Usage);

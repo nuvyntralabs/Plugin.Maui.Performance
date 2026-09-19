@@ -25,3 +25,5 @@ builder.UseMauiPerformance(options =>
 ```
 
 `maui profile` supports **Android** and **iOS simulator** only. Install the MAUI CLI so the `maui` command is on your PATH.
+
+On an interactive terminal `maui-perf` asks every 4 hours whether to update from nuget.org (`[y/N]`, default no). Skip with `--no-update-check` or `NUVYNTRA_NO_UPDATE_CHECK=1`.

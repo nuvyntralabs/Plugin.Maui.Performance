@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8
+
+- `maui-perf` asks every 4 hours on an interactive terminal whether to update from nuget.org (`--no-update-check` to skip). The CLI does not phone home.
+
 ## 1.0.7
 
 - Add `MauiProfile` as an intuitive wrapper for `maui profile` / `Microsoft.Maui.ProfilingHelper`: session detection, first-page / first-frame / named-scenario stop, marks, and command helpers.

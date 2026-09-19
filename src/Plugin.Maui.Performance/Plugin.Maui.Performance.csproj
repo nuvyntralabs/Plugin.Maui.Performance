@@ -28,7 +28,7 @@
     <PackageProjectUrl>https://nuvyntralabs.github.io/packages/plugin-maui-performance/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nuvyntralabs/Plugin.Maui.Performance</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <PackageReleaseNotes>Add MauiProfile: wrap maui profile / MauiProfilingHelper with first-frame stop, named scenarios, marks, and maui-perf command helpers.</PackageReleaseNotes>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

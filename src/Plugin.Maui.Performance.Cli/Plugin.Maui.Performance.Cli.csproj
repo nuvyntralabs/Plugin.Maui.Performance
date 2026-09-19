@@ -25,8 +25,8 @@
     <PackageProjectUrl>https://nuvyntralabs.github.io/packages/plugin-maui-performance/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nuvyntralabs/Plugin.Maui.Performance</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.7</Version>
-    <PackageReleaseNotes>Add maui-perf: wrap maui profile startup/manual with android/ios aliases, 30s durations, and StartupComplete stopping events.</PackageReleaseNotes>
+    <Version>1.0.8</Version>
+    <PackageReleaseNotes>1.0.8: Interactive nuget.org self-update check every 4 hours (--no-update-check to skip).</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

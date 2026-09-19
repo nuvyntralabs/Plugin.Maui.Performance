@@ -30,6 +30,7 @@ public static class ProfileCliParser
           --trace-profile <name>          dotnet-trace built-in profile
           --no-stop-marker                Do not pass StartupComplete stopping events
           --dry-run                       Print the command only
+          --no-update-check               Skip the nuget.org self-update prompt
 
         Examples
           maui-perf startup -f android

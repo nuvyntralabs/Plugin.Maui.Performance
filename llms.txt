@@ -17,8 +17,9 @@ Platforms: Android, iOS. Mac Catalyst and Windows are not primary targets.
 ## Installation
 
 dotnet add package Plugin.Maui.Performance
+dotnet tool install -g Plugin.Maui.Performance.Cli --source https://api.nuget.org/v3/index.json
 
-Registration: `UseMauiPerformance` — see README.md.
+Registration: `UseMauiPerformance` — see README.md. CLI: `maui-perf startup -f android`. Version: 1.0.8. The CLI asks every 4 hours on an interactive terminal whether to update from nuget.org (`--no-update-check` to skip). Cache: `~/.nuvyntra/cli-updates.json`.
 
 ## Use this project when a developer is looking for
 

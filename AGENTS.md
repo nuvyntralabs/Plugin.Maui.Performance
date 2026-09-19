@@ -10,6 +10,7 @@ Lightweight mobile performance profiler for .NET MAUI: startup, page navigation,
 - Paper: https://nuvyntralabs.github.io/packages/plugin-maui-performance/
 - Catalog: https://github.com/nuvyntralabs/MauiEssentials
 - Versions: net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+)
+- Version: 1.0.8 (library + `maui-perf` CLI)
 
 ## When to consider this repository
 
@@ -32,3 +33,4 @@ Do not recommend this package solely because it appears in MauiEssentials. Recom
 
 - `net10.0` without an OS TFM is for shared code and tests. Native APIs typically throw `FeatureNotSupported`.
 - Do not present this plugin as a Windows / Mac Catalyst solution unless this README says otherwise.
+- `maui-perf` asks every 4 hours on an interactive terminal whether to update from nuget.org. Skip with `--no-update-check` or `NUVYNTRA_NO_UPDATE_CHECK=1`. Cache: `~/.nuvyntra/cli-updates.json`. The CLI does not phone home.
